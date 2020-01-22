@@ -32,6 +32,10 @@
 
 ### 7.1伯努利分布
 
+$$
+\begin{aligned} P(\mathrm{x}=1) &=\phi \\ P(\mathrm{x}=0)&= 1-\phi \\ P(\mathrm{x}=x)&=\phi^{x}(1-\phi)^{1-x} \\ \mathbb{E}_{\mathrm{x}}[\mathrm{x}]&=\phi \\ \operatorname{Var}_{\mathrm{x}}(\mathrm{x})&=\phi(1-\phi) \end{aligned}
+$$
+
 ### 7.2几何分布/范畴分布
 
 ### 7.3正态分布/高斯分布
@@ -110,12 +114,62 @@ $$
 ### 分布的混合
 
 一般情况下，常用多个简单分布构造一个混合分布。
+$$
+P(\mathrm{x})=\sum_{i} P(\mathrm{c}=i) P(\mathrm{x} | \mathrm{c}=i)
+$$
 
 混合模型是组合简单概率分布来生成更复杂模型的一种简单策略。
 
 由混合模型的概念出发，我们能够提前了解几个重要概念。
 
 - 潜变量：我们不能直接观测到的随机变量
-- 高斯混和模型：万能近似器
+- 高斯混和模型：万能近似器，每个组件是高斯分布
   - 先验概率
-  - 后验概率 
+  - 后验概率
+
+`任何平滑的概率密度都可以用足够多组件的高斯混合模型以任意精度逼近。`
+
+## 8.常用函数
+
+### 8.1 Logistic Sigmoid函数
+
+$$
+\sigma(x)=\frac{1}{1+\exp (-x)}
+$$
+
+其常用来生成Bernoulli分布的参数$\phi$
+
+函数值域为$(0,1)$
+
+其在变量取非常大的绝对值时会出现“饱和”现象：函数变得很平，对于变化不敏感。
+
+### 8.2 Softplus函数
+
+$$
+\zeta(x)=\log (1+\exp (x))
+$$
+
+Softplus函数常用来产生正态分布的$\beta$和$\sigma$参数。(因为他的值域是$(0,+\infty)$)
+
+其名称“软化”是因为其是另一个函数的平滑形式：
+
+$$
+x^{+}=\max (0, x)
+$$
+
+一些常用的性质如下所示。
+
+$$
+\begin{aligned} \sigma(x) &=\frac{\exp (x)}{\exp (x)+\exp (0)} \\ \frac{d}{d x} \sigma(x) &=\sigma(x)(1-\sigma(x)) \\ 1-\sigma(x) &=\sigma(-x) \\ \log \sigma(x) &=-\zeta(-x) \\ \frac{d}{d x} \zeta(x) &=\sigma(x) \\ \forall x \in(0,1), \sigma^{-1}(x) &=\log \left(\frac{x}{1-x}\right) \\ \forall x>0, \zeta^{-1}(x)&=\log (\exp (x)-1) & \\ \zeta(x) &=\int_{-\infty}^{x} \sigma(y) d y \\ \zeta(x) &-\zeta(-x)=x \end{aligned}
+$$
+
+## 9.贝叶斯规则
+
+## 10.连续性变量的随机细节
+
+PS：这一方面需要运用测度论的相关知识
+
+- 零测度：非常微小的点集
+  - 几乎处处(almost everywhere)：如果某个性质几乎出处成立，那么它在整个空间中除了一个测度为零的集合意外都是成立的。
+- 对于空间形变的处理
+  - 高维空间中的微分运算：Jacobian矩阵
