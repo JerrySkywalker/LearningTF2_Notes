@@ -61,3 +61,11 @@ $$
 
 有时，我们需要计算输入输出都是都是向量的函数的偏导数。包含所有这样偏导数的矩阵称为雅各布(Jacobian)矩阵。
 
+对$f: \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$，我们规定他的Jacobian矩阵为
+
+$$
+J_{i, j}=\frac{\partial}{\partial x_{j}} f(x)_{i}
+$$
+
+其中$J \in \mathbb{R}^{n \times m}$
+
