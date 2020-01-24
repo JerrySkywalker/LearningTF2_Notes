@@ -57,15 +57,25 @@ $$
 
 ## 4.梯度之上：Jacobian和Hessian矩阵
 
-### 4.1 雅各布(Jacobian)矩阵
-
 有时，我们需要计算输入输出都是都是向量的函数的偏导数。包含所有这样偏导数的矩阵称为雅各布(Jacobian)矩阵。
 
-对$f: \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$，我们规定他的Jacobian矩阵为
+对$f: \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$，我们规定他的Jacobian矩阵为$J \in \mathbb{R}^{n \times m}$
 
 $$
 J_{i, j}=\frac{\partial}{\partial x_{j}} f(x)_{i}
 $$
 
-其中$J \in \mathbb{R}^{n \times m}$
+相对应的，包含高维函数全部的二阶倒数的矩阵称为Hessian矩阵$H(f)(x)$
 
+$$
+H(f)(x)_{i, j}=\frac{\partial^{2}}{\partial x_{i} \partial x_{j}} f(x)
+$$
+
+有两点需要注意：
+
+- Hessian矩阵等价与梯度的Jacobian矩阵。
+- 由于微分算子对二阶偏导连续的点可交换，而在深度学习中遇到的函数一般也是如此，所以一般情况下，Hessian矩阵一般是实对称的，
+
+$$
+\frac{\partial^{2}}{\partial x_{i} \partial x_{j}} f(\boldsymbol{x})=\frac{\partial^{2}}{\partial x_{j} \partial x_{i}} f(\boldsymbol{x})
+$$
