@@ -2,7 +2,9 @@
 
 本节介绍机器学习的一些基础概念
 
-## 学习算法
+## 1.学习算法
+
+### 1.1基础概念
 
 - 学习：对于某类任务$T$和性能度量$P$，经过经验$E$的改进，$T,P$会有一定程度的提升
 - 任务：即我们要实现的具体目标
@@ -33,4 +35,41 @@
   - 监督学习：通过数据集上的标签，推测分类标准
   - 区别：无监督学习得到$p(x)$，监督学习得出$p(y|x)$
   - 监督学习和无监督学习可以相互转化(全概率公式、贝叶斯公式)
+  - 设计矩阵：数据集的常用表示方法。设计矩阵的每一行包含一个不同的样本，每一列代表不同的特征。
 
+### 1.2实例：线性回归
+
+线性回归是一类最常见的，也是最简单的学习算法的使用领域，其有助于我们回顾整个学习算法的来龙去脉。
+
+#### 1.2.1一般形式
+
+一般的线性回归模型如下：
+$$
+\hat{y}=w^{\top} x+b
+$$
+
+- $w$：权重
+- $b$：偏置
+- $y(x)$：这是一个从特征到预测的一个映射，称为仿射函数
+
+### 1.2.2 度量
+
+假设我们有一个设计矩阵，不用它来训练，而仅用它来评估性能，我们称之为测试集。
+
+一种常用方式是计算测试集上的均方误差(Mean Squared Error,MSE)
+$$
+\text { MSE }_{\text {test }}=\frac{1}{m} \sum_{i}\left(\hat{y}^{(\text {test })}-y^{(\text {test })}\right)_{i}^{2}
+$$
+显然，
+$$
+\mathrm{MSE}_{\text {test }}=\frac{1}{m}\left\|\hat{y}^{(\text {test })}-y^{(\text {test })}\right\|_{2}^{2}
+$$
+
+构建一个机器学习算法的思路如下：通过观察训练集$\left(X^{(\text {train })}, y^{(\text {train })}\right)$获得经验，减少$\operatorname{MSE}_{\text {test}}$，以改进权重$w$。
+
+减少$MSE_{test}$，我们可以简化模型，仅理解为求其导数为零的情况，以下进行一些推导：
+$$
+\begin{aligned} \nabla_{w} \operatorname{MSE}_{\text {train }}=0 \\ \Rightarrow \nabla_{w} \frac{1}{m}\left\|\hat{y}^{(\text {train })}-y^{(\text {train })}\right\|_{2}^{2}=0 \\ \Rightarrow \frac{1}{m} \nabla_{w}\left\|X^{(\text {train })} w-y^{(\text {train })}\right\|_{2}^{2}=0 \\ \Rightarrow \nabla_{w}\left(X^{(\text {train })} w-y^{(\text {train })}\right)^{\top}\left(X^{(\text {train })} w-y^{(\text {train })}\right)=0 \\ \Rightarrow 2 X^{(\text {train })} w-2 w^{\top} X^{(\text {train }) \top} y^{(\text {train }) \top} y^{(\text {train })}=0 \\ \Rightarrow w=\left(X^{(\text {train })}\right)^{-1} X^{(\text {train }) \top} y^{(\text {train })} \end{aligned}
+$$
+
+由此推到的$w$称为正规方程。
