@@ -177,3 +177,35 @@ $$
 为避免这种情况，一种朴素想法是：在原始数据上随机采样或分离出不同数据集上训练和测试应的部分。其引出了一种常见做法：`k-折交叉验证法`。
 
 ## 4.估计，偏差，方差
+
+本节简单回顾统计学方面的相关工具
+
+### 4.1点估计
+
+- 点估计/统计量
+
+$$
+\hat{\boldsymbol{\theta}}_{m}=g\left(\boldsymbol{x}^{(1)}, \cdots, \boldsymbol{x}^{(m)}\right)
+$$
+
+- 函数估计
+
+### 2.偏差
+
+- 估计的偏差
+
+$$
+\operatorname{bias}\left(\hat{\boldsymbol{\theta}}_{m}\right)=\mathbb{E}\left(\hat{\boldsymbol{\theta}}_{m}\right)-\boldsymbol{\theta}
+$$
+
+- 无偏的
+
+$$
+\operatorname{bias}\left(\hat{\boldsymbol{\theta}}_{m}\right)=0
+$$
+
+- 渐进无偏的 
+
+$$
+\lim _{m \rightarrow \infty} \operatorname{bias}\left(\hat{\boldsymbol{\theta}}_{m}\right)=0
+$$
