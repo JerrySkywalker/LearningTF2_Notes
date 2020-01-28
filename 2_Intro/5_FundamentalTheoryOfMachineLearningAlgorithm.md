@@ -190,7 +190,7 @@ $$
 
 - 函数估计
 
-### 2.偏差
+### 4.2.偏差
 
 - 估计的偏差
 
@@ -210,7 +210,7 @@ $$
 \lim _{m \rightarrow \infty} \operatorname{bias}\left(\hat{\boldsymbol{\theta}}_{m}\right)=0
 $$
 
-### 3.方差和标准差
+### 4.3.方差和标准差
 
 - 方差
 
@@ -228,7 +228,7 @@ $$
 
 均值额标准差在机器学习中非常有用。我们通常用测试集样本的误差均值来估计泛化误差。
 
-### 4.权衡偏差和方差以最小化均方误差
+### 4.4.权衡偏差和方差以最小化均方误差
 
 偏差和方差度量着估计量的两个不同的误差来源：
 
@@ -244,3 +244,9 @@ $$
 $$
 \begin{array}{l}{\mathrm{MSE} =\mathrm{E}\left[\left(\hat{\theta}_{m}-\theta\right)^{2}\right]} \\ { =\operatorname{Bias}\left(\hat{\theta}_{m}\right)^{2}+\operatorname{Var}\left(\hat{\theta}_{m}\right)}\end{array}
 $$
+
+需要特别注意的是，偏差和方差的关系和机器学习中的容量，过拟合，欠拟合的概念紧密相连。
+
+用MSE来度量泛化误差(偏差和方差对于泛化误差都是有意义的)时，增加容量会增加方差，减小偏差。
+
+### 4.5.一致性
