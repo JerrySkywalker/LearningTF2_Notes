@@ -299,3 +299,20 @@ $$
 
 ### 5.2 条件对数似然和均方误差
 
+将最大似然估计推广到条件概率上是很简单的。而这也是监督学习的基础。
+
+如果$X$表示所有的输入，$Y$表述我们观测到的目标，那么条件的最大似然估计为：
+
+$$
+\theta_{\mathrm{ML}}=\arg \max _{\theta} P(Y | X ; \theta)
+$$
+
+如果假设是独立同分布的，那么可以将上式分解为：
+
+$$
+\theta_{\mathrm{ML}}=\underset{\theta}{\arg \max } \sum_{i=1}^{m} \log P\left(\boldsymbol{y}^{(i)} | \boldsymbol{x}^{(i)} ; \boldsymbol{\theta}\right)
+$$
+
+### 5.3 最大似然的理想性质
+
+- 当样本数目$m $
