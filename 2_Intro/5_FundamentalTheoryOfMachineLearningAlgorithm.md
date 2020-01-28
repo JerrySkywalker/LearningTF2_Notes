@@ -250,3 +250,31 @@ $$
 用MSE来度量泛化误差(偏差和方差对于泛化误差都是有意义的)时，增加容量会增加方差，减小偏差。
 
 ### 4.5.一致性
+
+我们期望，当数据集中的数据点数量增加时，点估计会收敛于参数的真实值，即：
+
+$$
+\text { plim }_{m \rightarrow \infty} \hat{\theta}_{m}=\theta
+$$
+
+这称为“一致性”。有时它指的是若一致性，有时它指强一致性——几乎必然收敛
+
+一致性保证了估计量的偏差会随着数据样本数目的增多而减少。反之则不然——渐进无偏并不一定意味着一致性。
+
+## 5.最大似然估计
+
+我们希望有些准则可以让我们从不同模型中得到特定的函数作为好的估计，而不是猜测某些函数可能是好的估计。
+
+最常用的准则时最大似然估计。
+
+- 定义：对于$\mathrm{X}=\left\{x^{(1)}, \cdots, x^{(m)}\right\}$，独立的由未知的真实数据生成分布$p_{\mathrm{data}(X)}$生成。令$p_{\mathrm{data}(X;\theta)}$是一族由参数$\theta$确定的在相同空间上的概率分布，则对于$\theta$的最大似然估计为：
+  
+$$
+\begin{aligned} \theta_{\mathrm{ML}} &=\underset{\theta}{\arg \max } p_{\text {model }}(\mathrm{X} ; \boldsymbol{\theta}) \\ &=\underset{\boldsymbol{\theta}}{\arg \max } \prod_{i=1}^{m} p_{\text {model }}\left(\boldsymbol{x}^{(i)} ; \boldsymbol{\theta}\right) \end{aligned}
+$$
+
+- 为简便计算，一般将其化为对数形式（求和形式）：
+
+$$
+\theta_{\mathrm{ML}}=\arg \max _{\theta} \sum_{i=1}^{m} \log p_{\text {model }}\left(x^{(i)} ; \theta\right)
+$$
