@@ -263,6 +263,8 @@ $$
 
 ## 5.最大似然估计
 
+### 5.1 一般的最大似然估计
+
 我们希望有些准则可以让我们从不同模型中得到特定的函数作为好的估计，而不是猜测某些函数可能是好的估计。
 
 最常用的准则时最大似然估计。
@@ -278,3 +280,22 @@ $$
 $$
 \theta_{\mathrm{ML}}=\arg \max _{\theta} \sum_{i=1}^{m} \log p_{\text {model }}\left(x^{(i)} ; \theta\right)
 $$
+
+- 因为当重新缩放代价函数时$\mathrm{argmax}$不会改变，我们可以除以$\mathrm{m}$以得到和训练数据经验分布$\hat{p}_{\mathrm{data}}$相关的期望作为准则
+
+$$
+\theta_{\mathrm{ML}}=\arg \max _{\theta} \mathbb{E}_{\mathbf{x} \sim p_{\text {data }}} \log p_{\text {model }}(\boldsymbol{x} ; \boldsymbol{\theta})
+$$
+
+- KL散度：一种解释最大似然估计的观点是将它看成最小化训练集上的经验分布$\hat{p}_{\mathrm{data}}$和模型分布之间的差异。两者之间的差异大小用KL散度来度量，其定义如下。由于左边一项仅与数据生成过程有关，和模型无关，这意味着当训练模型的KL散度最小化时，只需使得
+$-\mathbb{E}_{\mathbf{x} \sim \hat{p}_{\text {data }}}\log p_{\text {model }}(\boldsymbol{x})$
+最小即可。
+
+$$
+D_{\mathrm{KL}}\left(\hat{p}_{\text {data }} \| p_{\text {model }}\right)=\mathbb{E}_{\mathbf{x} \sim \hat{p}_{\text {data }}}\left[\log \hat{p}_{\text {data }}(\boldsymbol{x})-\log p_{\text {model }}(\boldsymbol{x})\right]
+$$
+
+需要注意的时，虽然最优$\theta$在最大化似然和最小化KL散度时是相同的，但目标函数的值是不同的。在软件中，我们通常将两者都称为最小化代价函数。因此最大化似然变成了最小化负对数似然(NLL)，或者等价的最小化交叉熵。
+
+### 5.2 条件对数似然和均方误差
+
