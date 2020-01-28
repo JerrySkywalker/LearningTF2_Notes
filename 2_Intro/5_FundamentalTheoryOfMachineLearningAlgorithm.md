@@ -235,3 +235,12 @@ $$
 - 偏差：度量偏离真实函数或参数的误差
 - 方差：度量数据上任意特定采样可能导致的估计期望的偏差
 
+所以如何权衡这两种误差的影响呢？
+
+- 交叉检验：一种最简单方法是交叉验证。经过实践检验证实，交叉验证在真实世界的许多任务上表现都很理想。
+
+- 均方误差：另一种方法是比较这些估计的均方误差(Mean Squared Error,MSE)，其度量着估计和真实参数之间平方误差的总体期望误差。
+
+$$
+\begin{array}{l}{\mathrm{MSE} =\mathrm{E}\left[\left(\hat{\theta}_{m}-\theta\right)^{2}\right]} \\ { =\operatorname{Bias}\left(\hat{\theta}_{m}\right)^{2}+\operatorname{Var}\left(\hat{\theta}_{m}\right)}\end{array}
+$$
