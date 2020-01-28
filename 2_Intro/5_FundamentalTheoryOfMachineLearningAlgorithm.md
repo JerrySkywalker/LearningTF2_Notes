@@ -209,3 +209,20 @@ $$
 $$
 \lim _{m \rightarrow \infty} \operatorname{bias}\left(\hat{\boldsymbol{\theta}}_{m}\right)=0
 $$
+
+### 3.方差和标准差
+
+- 方差
+
+$$
+\operatorname{Var}(\hat{\theta})
+$$
+
+- 标准差
+
+$$
+\operatorname{SE}(\hat{\theta})
+$$
+
+估计量的方差和标准差告诉我们，当独立的从潜在的数据生成过程中重采样数据集时，如何让期望估计的变化，正如我们期望估计的偏差越小，其方差、标准差也应越小。
+
