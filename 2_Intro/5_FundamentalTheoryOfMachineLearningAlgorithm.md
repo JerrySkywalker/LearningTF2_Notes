@@ -315,4 +315,4 @@ $$
 
 ### 5.3 最大似然的理想性质
 
-- 当样本数目$m\rightarrow \infty$时
+- 当样本数目$m\rightarrow \infty$时，就收敛率而言是最好的渐进估计。
