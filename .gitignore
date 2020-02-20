@@ -123,3 +123,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+keras/Classifier/my_model.h5
+keras/Classifier/my_model.h5
